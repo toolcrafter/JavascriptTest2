@@ -1,5 +1,8 @@
+// @ts-check
+
 // global variables
 var app;
+var PIXI;
 
 // called once when the application starts
 function applicationStart() {
