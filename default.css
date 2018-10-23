@@ -1,0 +1,24 @@
+body{
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+h1 {
+    text-align: center;
+    margin: 1cm;
+    color: coral;
+    font-size: 2cm;
+}
+
+div {
+    background-color: #DDDDDD;
+    margin: 1cm;
+    padding: 1cm;
+}
+
+canvas {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
