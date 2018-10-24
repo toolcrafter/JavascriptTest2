@@ -20,12 +20,16 @@ var leftKey, rightKey, upKey, downKey, aKey, wKey, sKey, dKey, spaceKey;
 var testTween;
 var coords;
 
+var hasInteractedOnce = false;
+
 // called once when the application starts
 function applicationStart() {
 
     //Create a Pixi Application
     canvasWidth = document.documentElement.clientWidth;
     canvasHeight = document.documentElement.clientHeight;
+
+    PIXI.utils.skipHello();
 
     app = new PIXI.Application({
         forceCanvas: true,
@@ -47,7 +51,6 @@ function applicationStart() {
     PIXI.loader
         .add("images/player.png")
         .add("images/box.jpg")
-        .add("sounds/blip.wav")
         .load(loadingFinished);
 
     app.ticker.add(gameLoop);
@@ -134,13 +137,21 @@ function loadingFinished() {
     // PIXI.sound.add('bird', 'sounds/blip.wav');
     // PIXI.sound.play('bird');
 
-    PIXI.sound.Sound.from({
-        url: 'sounds/blip.wav',
-        autoPlay: true,
-        complete: function() {
-            console.log('Sound finished');
-        }
-    });
+    // PIXI.sound.Sound.from({
+    //     url: 'sounds/blip.wav',
+    //     autoPlay: true,
+    //     complete: function() {
+    //         console.log('Sound finished');
+    //     }
+    // });
+    var audio = new Audio('sounds/blip.wav');
+
+    app.stage.interactive = true;
+    app.stage.on('pointerdown', () => {
+        hasInteractedOnce = true;
+        audio.play();
+        console.log("play audio");
+    })
 }
 
 function spaceKeyPressed() {
