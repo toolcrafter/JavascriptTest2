@@ -13,8 +13,10 @@
       }
 */
 
+var KeyCodes = Object.freeze({ "left": 37, "right": 39, "down": 40, "up": 38, "a": 65, "w": 87, "s": 83, "d": 68, "space": 32 })
+
 function keyboard(keyCode) {
-    
+
     let key = {};
     key.code = keyCode;
     key.isDown = false;
@@ -29,7 +31,7 @@ function keyboard(keyCode) {
             key.isDown = true;
             key.isUp = false;
         }
-        event.preventDefault();
+        // event.preventDefault();
     };
 
     // upHandler
@@ -39,7 +41,7 @@ function keyboard(keyCode) {
             key.isDown = false;
             key.isUp = true;
         }
-        event.preventDefault();
+        // event.preventDefault();
     };
 
     // attach event listeners
